@@ -1,0 +1,4 @@
+# WIP files
+*.asv
+*.mat
+*.DS_Store
