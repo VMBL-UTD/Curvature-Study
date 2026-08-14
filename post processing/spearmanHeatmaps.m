@@ -9,7 +9,7 @@ summaryMat = fullfile(path, [lower(plottype) 'CalcResults_res012.mat']);
 
 R = load(summaryMat, ...
     'kappa', 'rotation', 'stenosis', 'resolution', 'edge_length', ...
-    'axialSumData');
+    'sumData');
 
 % Stress & Strain Calculations
 R.rotation = wrapTo360(R.rotation);
@@ -60,25 +60,25 @@ for i = 1:nK
                   (R.stenosis*100 == stenosis(k));
             if any(idx)
                 f = find(idx,1,'first');
-                plaqueTensileStress(i,j,k)     = R.axialSumData.tensileStress.plaque(f);
-                mediaTensileStress(i,j,k)      = R.axialSumData.tensileStress.media(f);
-                advenTensileStress(i,j,k)      = R.axialSumData.tensileStress.adventitia(f);
-                totalTensileStress(i,j,k)      = R.axialSumData.tensileStress.total(f);
+                plaqueTensileStress(i,j,k)     = R.sumData.tensileStress.plaque(f);
+                mediaTensileStress(i,j,k)      = R.sumData.tensileStress.media(f);
+                advenTensileStress(i,j,k)      = R.sumData.tensileStress.adventitia(f);
+                totalTensileStress(i,j,k)      = R.sumData.tensileStress.total(f);
 
-                plaqueCompressiveStress(i,j,k) = R.axialSumData.compressiveStress.plaque(f);
-                mediaCompressiveStress(i,j,k)  = R.axialSumData.compressiveStress.media(f);
-                advenCompressiveStress(i,j,k)  = R.axialSumData.compressiveStress.adventitia(f);
-                totalCompressiveStress(i,j,k)  = R.axialSumData.compressiveStress.total(f);
+                plaqueCompressiveStress(i,j,k) = R.sumData.compressiveStress.plaque(f);
+                mediaCompressiveStress(i,j,k)  = R.sumData.compressiveStress.media(f);
+                advenCompressiveStress(i,j,k)  = R.sumData.compressiveStress.adventitia(f);
+                totalCompressiveStress(i,j,k)  = R.sumData.compressiveStress.total(f);
 
-                plaqueTensileStrain(i,j,k)     = R.axialSumData.tensileStrain.plaque(f);
-                mediaTensileStrain(i,j,k)      = R.axialSumData.tensileStrain.media(f);
-                advenTensileStrain(i,j,k)      = R.axialSumData.tensileStrain.adventitia(f);
-                totalTensileStrain(i,j,k)      = R.axialSumData.tensileStrain.total(f);
+                plaqueTensileStrain(i,j,k)     = R.sumData.tensileStrain.plaque(f);
+                mediaTensileStrain(i,j,k)      = R.sumData.tensileStrain.media(f);
+                advenTensileStrain(i,j,k)      = R.sumData.tensileStrain.adventitia(f);
+                totalTensileStrain(i,j,k)      = R.sumData.tensileStrain.total(f);
 
-                plaqueCompressiveStrain(i,j,k) = R.axialSumData.compressiveStrain.plaque(f);
-                mediaCompressiveStrain(i,j,k)  = R.axialSumData.compressiveStrain.media(f);
-                advenCompressiveStrain(i,j,k)  = R.axialSumData.compressiveStrain.adventitia(f);
-                totalCompressiveStrain(i,j,k)  = R.axialSumData.compressiveStrain.total(f);
+                plaqueCompressiveStrain(i,j,k) = R.sumData.compressiveStrain.plaque(f);
+                mediaCompressiveStrain(i,j,k)  = R.sumData.compressiveStrain.media(f);
+                advenCompressiveStrain(i,j,k)  = R.sumData.compressiveStrain.adventitia(f);
+                totalCompressiveStrain(i,j,k)  = R.sumData.compressiveStrain.total(f);
             end
         end
     end
@@ -203,8 +203,8 @@ for i=1:2
 
         set(ax, 'XTick',1:3,'XTickLabel',factors, ...
             'YTick',1:3,'YTickLabel',tissues, ...
-            'FontSize',11,'TickDir','out','Box','off');
-        title(stypes{si},'FontWeight','bold','FontSize',11);
+            'FontSize',13,'TickDir','out','Box','off');
+        title(stypes{si},'FontWeight','bold','FontSize',15);
 
         % Annotate cells
         for ti = 1:3
@@ -214,7 +214,7 @@ for i=1:2
                 if abs(r) < 0.4, textColor = [0.2 0.2 0.2]; end
                 text(fi, ti, sprintf('%.2f%s', r), ...
                     'HorizontalAlignment','center','VerticalAlignment','middle', ...
-                    'FontSize',10,'FontWeight','bold','Color',textColor);
+                    'FontSize',13,'FontWeight','bold','Color',textColor);
             end
         end
     end
