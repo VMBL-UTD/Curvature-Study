@@ -24,6 +24,7 @@ clear
 
 feb_out_path_010 = "F:\NCUR Simulations\4.2_0.1Res_NCPlaque";
 save_path_010    = "F:\NCUR Simulations\4.2_0.1Res_NCPlaque";
+calcType = 'Max';
 
 results010 = batchProcessFolder(feb_out_path_010, calcType);
 
